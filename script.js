@@ -80,7 +80,11 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
         })
         .on("mouseenter", tooltipEnter)
         .on("mousemove", tooltipMove)
-        .on("mouseleave", tooltipLeave);
+        .on("mouseleave", tooltipLeave)
+        .on("touchstart", tooltipEnter)
+        .on("touchmove", tooltipMove)
+        .on("touchend", tooltipLeave)
+        ;
         
         //this loops adds the rest of the charts (filtered by cause of death)
         for (let i = 0; i < 13; i++) {
@@ -92,6 +96,10 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
             .style("background-color", colors[i])
             .on("mouseenter", tooltipEnter)
             .on("mousemove", tooltipMove)
-            .on("mouseleave", tooltipLeave);
+            .on("mouseleave", tooltipLeave)
+            .on("touchstart", tooltipEnter)
+            .on("touchmove", tooltipMove)
+            .on("touchend", tooltipLeave)
+            ;
         };
 });
