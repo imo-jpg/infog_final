@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Deaths at the Berlin Wall</title>
+        <meta charset="UTF-8">
+        <meta property="og:title" content="Deaths at the Berlin Wall"/>
+        <script src="https://unpkg.com/intersection-observer"></script>
+        <script src="https://unpkg.com/scrollama"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;400;600&display=swap" rel="stylesheet">         <link href="style.css" type="text/css" rel="stylesheet" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="text" id="intro">
+            <h3>Deaths at the Berlin Wall, 1961-1989</h3>
+            <!-- <p>An estimated 139 people died at the Berlin Wall during the years it was standing...</p> -->
+        </div>
+        <p class="label">(Hover over a square to reveal the name of the person it represents.)</p>
+
+
+        <div class="text">
+            <p>An estimated 139 people died at the Berlin Wall during the years it was standing...</p>
+        </div>
+
+        <div class="chart" id="chart1"></div>
+        <p class="label">139</p>
+
+        <div class="text">
+            <p>Most of them were shot...</p>
+        </div>
+
+        <div class="chart" id="chart2"></div>
+        <p class="label">93</p>
+
+        <div class="text">
+            <p>Many drowned...</p>
+        </div>
+
+        <div class="chart" id="chart3"></div>
+        <p class="label">25</p>
+
+        <div class="text">
+            <p>And the rest died in other ways...</p>
+        </div>
+
+        <div class="chartSmallContainer">
+            <div class="holderBig">
+                <p class="label regular">Train</p>
+                <div class="chartSmall" id="chart4"></div>
+                <p class="label">5</p>
+            </div>
+
+            <div class="holderMedium">
+                <p class="label regular">Suicide</p>
+                <div class="chartSmall" id="chart5"></div>
+                <p class="label">3</p>
+            </div>
+
+            <div class="holderMedium">
+                <p class="label regular">Fall</p>
+                <div class="chartSmall" id="chart6"></div>
+                <p class="label">2</p>
+            </div>
+
+            <div class="holderMedium">
+                <p class="label regular">Injuries</p>
+                <div class="chartSmall" id="chart7"></div>
+                <p class="label">2</p>
+            </div>
+
+            <div class="holderMedium">
+                <p class="label regular">Shot (Accident)</p>
+                <div class="chartSmall" id="chart8"></div>
+                <p class="label">2</p>
+            </div>
+
+            <div class="holderMedium">
+                <p class="label regular">Suffocation</p>
+                <div class="chartSmall" id="chart9"></div>
+                <p class="label">2</p>
+            </div>
+
+            <div class="holderSmall">
+                <p class="label regular">Accident</p>
+                <div class="chartSmall" id="chart10"></div>
+                <p class="label">1</p>
+            </div>
+
+            <div class="holderSmall">
+                <p class="label regular">Balloon Crash</p>
+                <div class="chartSmall" id="chart11"></div>
+                <p class="label">1</p>
+            </div>
+
+            <div class="holderSmall">
+                <p class="label regular">Bludgeoned</p>
+                <div class="chartSmall" id="chart12"></div>
+                <p class="label">1</p>
+            </div>
+
+            <div class="holderSmall">
+                <p class="label regular">Pneumonia</p>
+                <div class="chartSmall" id="chart13"></div>
+                <p class="label">1</p>
+            </div>
+
+            <div class="holderSmall">
+                <p class="label regular">Unknown</p>
+                <div class="chartSmall" id="chart14"></div>
+                <p class="label">1</p>
+            </div>
+
+        </div>
+
+        <div class="text">
+            <p>But they should all be remembered.</p>
+        </div>
+
+        <div id="footer"></div>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
+
+    
+    

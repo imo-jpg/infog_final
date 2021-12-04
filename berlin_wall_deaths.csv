@@ -1,0 +1,140 @@
+id,dob,dod,Names,Role,Cause,Age
+1,8/23/1902,8/22/1961,Ida Siekmann,Escapee,Injuries,59
+2,1/19/1937,8/24/1961,Günter Litfin,Escapee,Shot,25
+3,3/19/1934,8/29/1961,Roland Hoff,Escapee,Shot,27
+4,6/6/1914,9/17/1961,Rudolf Urban,Escapee,Pneumonia,47
+5,7/31/1881,9/26/1961,Olga Segler,Escapee,Injuries,80
+6,3/11/1939,10/4/1961,Bernd Lünser,Escapee,Fall,23
+7,3/8/1936,10/5/1961,Udo Düllick,Escapee,Drowned,26
+8,6/18/1936,10/14/1961,Werner Probst,Escapee,Shot,25
+9,1/28/1942,11/26/1961,Lothar Lehmann,Escapee,Drowned,20
+10,5/27/1941,12/9/1961,Dieter Wohlfahrt,Escapee,Shot,21
+11,1/31/1940,12/10/1961,Ingo Krüger,Escapee,Drowned,22
+12,8/12/1941,12/19/1961,Georg Feldhahn,No intention,Drowned,20
+13,4/25/1941,2/19/1962,Dorit Schmiel,Escapee,Shot,21
+14,7/1/1937,3/27/1962,Heinz Jercha,Helper of escapees,Shot,25
+15,5/2/1942,4/26/1962,Philipp Held,Escapee,Drowned,20
+16,9/14/1938,4/18/1962,Klaus Brueske,Escapee,Suffocation,24
+17,8/17/1942,4/18/1962,Peter Böhme,Escapee,Shot,20
+18,6/28/1941,4/18/1962,Jörgen Schmidtchen,Guard,Shot,21
+19,5/7/1942,4/29/1962,Horst Frank,Escapee,Shot,20
+20,12/28/1940,5/23/1962,Peter Göring,Guard,Shot,21
+21,4/29/1938,5/27/1962,Lutz Haberlandt,Escapee,Shot,24
+22,4/27/1945,6/5/1962,Axel Hannemann,Escapee,Shot,17
+23,7/21/1908,6/11/1962,Erna Kelm,Escapee,Drowned,54
+24,2/1/1949,6/11/1962,Wolfgang Glöde,No intention,Shot,13
+25,3/8/1942,6/18/1962,Reinhold Huhn,Guard,Shot,20
+26,12/9/1939,6/28/1962,Siegfried Noffke,Escapee,Shot,23
+27,1/14/1944,8/17/1962,Peter Fechter,Escapee,Shot,19
+28,1/10/1943,8/23/1962,Hans-Dieter Wesa,Escapee,Shot,20
+29,12/2/1921,9/4/1962,Ernst Mundt,Escapee,Shot,41
+30,4/28/1940,9/30/1962,Günter Seling,Guard,Shot-Accident,22
+31,4/27/1902,10/8/1962,Anton Walzer,Escapee,Shot,60
+32,7/12/1932,11/19/1962,Horst Plischke,Escapee,Drowned,30
+33,12/14/1944,11/27/1962,Otfried Reck,Escapee,Shot,18
+34,2/14/1942,12/5/1962,Günter Wiedenhöft,Escapee,Drowned,21
+35,12/11/1942,1/1/1963,Hans Räwel,Escapee,Shot,20
+36,7/5/1931,1/15/1963,Horst Kutscher,Escapee,Shot,32
+37,1/15/1943,1/24/1963,Peter Kreitlow,Escapee,Shot,20
+38,2/1/1947,3/3/1963,Wolf-Olaf Muszynski,Escapee,Drowned,16
+39,7/10/1943,4/26/1963,Peter Mädler,Escapee,Shot,20
+40,2/12/1941,9/8/1963,Siegfried Widera,Guard,Bludgeoned,23
+41,2/21/1940,11/4/1963,Klaus Schröter,Escapee,Drowned,24
+42,10/21/1939,11/25/1963,Dietmar Schulz,Escapee,Train,24
+43,10/27/1939,12/13/1963,Dieter Berger,No intention,Shot,24
+44,10/2/1945,12/25/1963,Paul Schultz,Escapee,Shot,18
+45,1/31/1939,2/27/1964,Walter Hayn,Escapee,Shot,25
+46,8/13/1943,5/5/1964,Adolf Philipp,No intention,Shot,21
+47,9/20/1934,6/22/1964,Walter Heike,Escapee,Shot,30
+48,10/27/1943,7/28/1964,Norbert Wolscht,Escapee,Drowned,21
+49,11/10/1944,7/28/1964,Rainer Gneiser,Escapee,Drowned,20
+50,6/12/1927,8/18/1964,Hildegard Trabant,Escapee,Shot,37
+51,11/10/1945,8/20/1964,Wernhard Mispelhorn,Escapee,Shot,19
+52,1/4/1943,10/5/1964,Egon Schultz,Guard,Shot-Accident,22
+53,8/8/1944,11/26/1964,Hans-Joachim Wolf,Escapee,Shot,20
+54,4/3/1945,12/3/1964,Joachim Mehr,Escapee,Shot,20
+56,2/21/1944,3/4/1965,Christian Buttkus,Escapee,Shot,21
+57,9/13/1940,3/25/1965,Ulrich Krzemien,West-East-Crossing,Drowned,25
+58,3/20/1939,5/3/1965,Hans-Peter Hauptmann,No intention,Shot,26
+59,10/28/1922,6/15/1965,Hermann Döbler,No intention,Shot,43
+60,3/3/1940,8/8/1965,Klaus Kratzel,Escapee,Train,25
+61,7/19/1941,8/18/1965,Klaus Garten,Escapee,Shot,24
+62,5/21/1942,10/18/1965,Walter Kittel,Escapee,Shot,23
+63,6/5/1936,11/11/1965,Heinz Cyrus,Escapee,Fall,29
+64,12/17/1917,11/25/1965,Heinz Sokolowski,Escapee,Shot,48
+65,2/27/1903,12/3/1965,Erich Kühn,Escapee,Unknown,63
+66,6/7/1938,12/26/1965,Heinz Schöneberger,Escapee,Shot,28
+67,10/23/1946,1/11/1966,Dieter Brandes,Escapee,Shot,19
+68,6/5/1934,2/7/1966,Willi Block,Escapee,Shot,32
+69,1/14/1953,3/14/1966,Lothar Schleusener,Escapee,Shot,13
+70,10/27/1955,3/14/1966,Jörg Hartmann,Escapee,Shot,10
+71,6/3/1944,3/19/1966,Willi Marzahn,Escapee,Shot,22
+72,3/11/1946,3/30/1966,Eberhard Schulz,Escapee,Shot,20
+73,2/19/1945,4/25/1966,Michael Kollender,Escapee,Shot,21
+74,2/28/1935,4/29/1966,Paul Stretz,No intention,Shot,31
+75,3/3/1933,7/26/1966,Eduard Wroblewski,Escapee,Shot,33
+76,10/26/1919,8/29/1966,Heinz Schmidt,No intention,Shot,47
+77,5/3/1960,9/13/1966,Andreas Senk,No intention,Drowned,6
+78,4/10/1949,12/16/1966,Karl-Heinz Kube,Escapee,Shot,18
+79,3/28/1929,1/27/1967,Max Sahmland,Escapee,Shot,38
+80,11/23/1942,10/17/1967,Franciszek Piesik,Escapee (Polish citizen),Drowned,25
+81,10/31/1945,2/18/1968,Elke Weckeiser,Escapee,Shot,22
+82,2/15/1943,2/19/1968,Dieter Weckeiser,Escapee,Shot,25
+83,2/9/1939,3/10/1968,Herbert Mende,No intention,Shot,29
+84,7/31/1949,5/28/1968,Bernd Lehmann,Escapee,Drowned,19
+85,7/22/1939,7/6/1968,Siegfried Krug,No intention,Shot,29
+86,7/12/1947,11/15/1968,Horst Körner,Escapee,Shot,21
+87,11/30/1941,11/15/1968,Rolf Henniger,Guard,Shot,27
+88,12/17/1940,4/9/1969,Johannes Lange,Escapee,Shot,28
+89,7/25/1948,9/13/1969,Klaus-Jürgen Kluge,Escapee,Shot,21
+90,5/10/1924,9/20/1969,Leo Lis,Escapee,Shot,45
+91,7/8/1948,3/10/1970,Eckhard Wehage,Escapee,Suicide,22
+92,12/15/1946,3/10/1970,Christel Wehage,Escapee,Suicide,23
+93,5/16/1943,6/19/1970,Heinz Müller,No intention,Shot,27
+94,7/19/1950,7/7/1970,Willi Born,Escapee,Suicide,20
+95,7/11/1950,8/2/1970,Friedhelm Ehrlich,No intention,Shot,20
+96,9/6/1928,8/7/1970,Gerald Thiem,Unclear,Shot,42
+97,6/2/1939,11/13/1970,Helmut Kliem,No intention,Shot,31
+98,1/26/1940,11/28/1970,Zock Han,Escapee,Drowned,31
+99,8/5/1948,12/25/1970,Christian-Peter Friese,Escapee,Shot,22
+100,6/23/1951,1/30/1971,Rolf-Dieter Kabelitz,Escapee,Shot,20
+101,9/1/1942,7/15/1971,Wolfgang Hoffmann,West-East-Crossing,Accident,29
+102,1/10/1949,7/24/1971,Werner Kühl,West-East-Crossing,Shot,23
+103,9/5/1941,10/2/1971,Dieter Beilig,West-East-Crossing,Shot,30
+104,11/20/1948,1/21/1972,Horst Kullack,Escapee,Shot,23
+105,7/12/1942,2/14/1972,Manfred Weylandt,Escapee,Drowned,30
+106,10/13/1952,3/7/1972,Klaus Schulze,Escapee,Shot,19
+107,1/3/1964,10/30/1972,Cengaver Katrancı,No intention,Drowned,9
+108,1/6/1971,1/22/1973,Holger H.,Escapee,Suffocation,2
+109,4/23/1944,3/5/1973,Volker Frommann,Escapee,Train,29
+110,2/8/1940,3/15/1973,Horst Einsiedel,Escapee,Shot,33
+111,5/17/1942,4/27/1973,Manfred Gertzki,Escapee,Drowned,31
+112,1/3/1964,5/14/1973,Siegfried Kroboth,No intention,Drowned,9
+113,9/1/1950,1/5/1974,Burkhard Niering,Escapee,Shot,23
+114,7/23/1935,3/29/1974,Czesław Kukuczka,Escapee (Polish citizen),Shot,39
+115,12/3/1905,5/10/1974,Johannes Sprenger,Suicide,Shot,68
+116,4/22/1968,6/15/1974,Giuseppe Savoca,No intention,Drowned,6
+117,11/24/1953,4/3/1975,Herbert Halli,Escapee,Shot,21
+118,5/11/1970,5/11/1975,Çetin Mert,No intention,Drowned,5
+119,3/24/1952,6/27/1975,Herbert Kiebler,Escapee,Shot,23
+120,6/30/1954,11/5/1975,Lothar Hennig,No intention,Shot,21
+121,2/21/1958,2/16/1977,Dietmar Schwietzer,Escapee,Shot,19
+122,7/13/1954,5/12/1977,Henri Weise,Escapee,Drowned,23
+123,1/3/1960,2/2/1979,Vladimir Odinzov,Escapee (Soviet soldier),Shot,19
+124,3/13/1956,11/4/1980,Ulrich Steinhauer,Guard,Shot,25
+125,8/25/1962,11/22/1980,Marienetta Jirkowsky,Escapee,Shot,18
+126,9/25/1948,12/10/1980,Grohganz Peter,Escapee,Shot,32
+127,5/31/1949,3/16/1981,Johannes Muschol,West-East-Crossing,Shot,32
+128,6/24/1954,4/16/1981,Hans-Jürgen Starrost,Escapee,Shot,27
+129,7/22/1955,12/12/1981,Thomas Taubmann,Escapee,Train,26
+130,2/8/1955,6/6/1982,Lothar Fritz Freie,No intention,Shot,27
+131,3/3/1962,12/25/1983,Silvio Proksch,Escapee,Shot,22
+132,10/20/1964,12/1/1984,Michael Schmidt,Escapee,Shot,20
+133,9/11/1951,9/3/1986,Rainer Liebeke,Escapee,Drowned,35
+134,8/23/1948,11/21/1986,Manfred Mäder,Escapee,Shot,38
+135,5/1/1964,11/21/1986,René Groß,Escapee,Shot,23
+136,8/31/1961,11/24/1986,Michael Bittner,Escapee,Shot,25
+137,7/8/1962,2/12/1987,Lutz Schmidt,Escapee,Shot,25
+138,4/13/1964,1/13/1989,Ingolf Diederichs,Escapee,Train,25
+139,6/21/1968,2/5/1989,Chris Gueffroy,Escapee,Shot,21
+140,8/29/1956,3/8/1989,Winfried Freudenberg,Escapee,Balloon crash,33
