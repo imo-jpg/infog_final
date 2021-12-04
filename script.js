@@ -2,35 +2,38 @@ const height = 900;
 const width = 1100;
 const padding = 20;
 
+//creates a list of the chart divs to which I add the boxes later
 let chart = [];
 for (let i = 0; i < 13; i++) {
     chart[i] = d3.select(`#chart${i+2}`);
 };
 
+//sets up the first (unfiltered) chart and the footer
 let chart1 = d3.select("#chart1");
 let footer = d3.select("#footer");
 
-
+//creates the tooltip to which I will add text later
 const tooltip = d3.select("body")
             .append("div")
             .attr("class", "tooltip")
             ;
 
+//reads in my dataset
 d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
 
+    //sets up two lists that I will use to assign colors to specific causes of death
     let colors = ["#34A8F9", "#978802", "#EA8F00", "#C1738D", "#288CD2", "#B7A40A", "#C07924", "#DD8FA9", "#2D6FA3", "#615718", "#9B5E00", "#7F4B5B", "#2D5A83"];
     let causes = ["Shot", "Drowned", "Train", "Suicide", "Fall", "Injuries", "Shot-Accident", "Suffocation", "Accident", "Balloon crash", "Bludgeoned", "Pneumonia", "Unknown"]
+    
+    //sets up a list of names (I have plans to potentially add a list to the footer)
     let names = [];
     for (let i = 0; i < dataset.length; i++) {
         names[i] = dataset[i].Names;
     };
-    
-
-    console.log(names);
-
 
     //D3 CODE------------------------------------------------------
 
+    //funtions for when the user's mouse hovers into, within, and out of a box
     function tooltipEnter(d) {
         d3.select(this)
         .style("border", "1px solid #ffffff");
@@ -61,6 +64,7 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
         tooltip.style("opacity", 0);
     };
 
+    //adds the first (unfiltered) chart
     chart1.selectAll(".person")
         .data(dataset)
         .enter()
@@ -78,11 +82,10 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
         .on("mousemove", tooltipMove)
         .on("mouseleave", tooltipLeave);
         
-
+        //this loops adds the rest of the charts (filtered by cause of death)
         for (let i = 0; i < 13; i++) {
             chart[i].selectAll(".person")
             .data(dataset.filter(function(d) { return d.Cause == causes[i] }))
-            // .data(dataset.filter(function(d) { return d.Cause == "Shot" }))
             .enter()
             .append("div")
             .attr("class", "person")
@@ -91,66 +94,4 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
             .on("mousemove", tooltipMove)
             .on("mouseleave", tooltipLeave);
         };
-
-    // chart[1].selectAll(".person")
-    //     .data(dataset.filter(function(d) { return d.Cause == "Shot" }))
-    //     .enter()
-    //     .append("div")
-    //     .attr("class", "person")
-    //     .style("background-color", "#34A8F9")
-    //     .on("mouseenter", tooltipEnter)
-    //     .on("mousemove", tooltipMove)
-    //     .on("mouseleave", tooltipLeave);
-
-
-    // chart[2].selectAll(".person")
-    //     .data(dataset.filter(function(d) { return d.Cause == "Drowned" }))
-    //     .enter()
-    //     .append("div")
-    //     .attr("class", "person")
-    //     .style("background-color", "#978802")
-    //     .on("mouseenter", tooltipEnter)
-    //     .on("mousemove", tooltipMove)
-    //     .on("mouseleave", tooltipLeave);
-
-    // chart[3].selectAll(".person")
-    //     .data(dataset.filter(function(d) { return d.Cause == "Train" }))
-    //     .enter()
-    //     .append("div")
-    //     .attr("class", "person")
-    //     .style("background-color", "#EA8F00")
-    //     .on("mouseenter", tooltipEnter)
-    //     .on("mousemove", tooltipMove)
-    //     .on("mouseleave", tooltipLeave);
-
-    // chart[4].selectAll(".person")
-    //     .data(dataset.filter(function(d) { return d.Cause == "Suicide" }))
-    //     .enter()
-    //     .append("div")
-    //     .attr("class", "person")
-    //     .style("background-color", "#C1738D")
-    //     .on("mouseenter", tooltipEnter)
-    //     .on("mousemove", tooltipMove)
-    //     .on("mouseleave", tooltipLeave);
-
-    // chart[5].selectAll(".person")
-    //     .data(dataset.filter(function(d) { return d.Cause == "Fall" }))
-    //     .enter()
-    //     .append("div")
-    //     .attr("class", "person")
-    //     .style("background-color", "#288CD2")
-    //     .on("mouseenter", tooltipEnter)
-    //     .on("mousemove", tooltipMove)
-    //     .on("mouseleave", tooltipLeave);
-
-    // chart[6].selectAll(".person")
-    //     .data(dataset.filter(function(d) { return d.Cause == "Injuries" }))
-    //     .enter()
-    //     .append("div")
-    //     .attr("class", "person")
-    //     .style("background-color", "#B7A40A")
-    //     .on("mouseenter", tooltipEnter)
-    //     .on("mousemove", tooltipMove)
-    //     .on("mouseleave", tooltipLeave);
-
 });
