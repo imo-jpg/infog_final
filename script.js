@@ -15,23 +15,117 @@ let footer = d3.select("#footer");
 //creates the tooltip to which I will add text later
 const tooltip = d3.select("body")
             .append("div")
-            .attr("class", "tooltip")
-            ;
+            .attr("class", "tooltip");
+
+let dateFormat = d3.timeParse("%x");
+let justYear = d3.timeFormat("%y");
 
 //reads in my dataset
 d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
+
+    dataset.forEach(function(d) {
+        d.Age = parseFloat(d.Age);
+        d.year = d.dod;
+        d.year = justYear(dateFormat(d.year));
+    });
+
+    //sets up the nested ages for building the histogram
+    let ageNest = d3
+        .nest()
+        .key(d => d.Age)
+        .entries(dataset)
+        .sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
+
+    let newAges = [];
+
+        for (let i = 0; i < ageNest.length; i++) {
+           if (i != 0) {
+               let difference = ageNest[i].key - ageNest[i-1].key;
+               if (difference == 1) {
+               } else if (difference > 1) {
+                   for (let j = 1; j < difference; j++) {
+                       newAges.push({key: `${parseFloat(ageNest[i].key) - j}`, values: []});
+                    }
+                }
+            }
+       };
+
+   
+    let allAges = ageNest.concat(newAges);
+    allAges.sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
+
+    let ageHistogram = d3.select("#age");
+
+    let ageGroup = ageHistogram
+        .selectAll(".ageGroup")
+        .data(allAges)
+        .enter()
+        .append("div")
+        .attr("class", "ageGroup");
+    
+
+    //sets up the nested ages for building the histogram
+
+    let yearNest = d3
+        .nest()
+        .key(d => d.year)
+        .entries(dataset);
+
+    let newYears = [];
+
+     for (let i = 0; i < yearNest.length; i++) {
+        if (i != 0) {
+            if (yearNest[i].key - yearNest[i-1].key == 1) {
+            } else {
+                newYears.push({key: `${parseFloat(yearNest[i].key) - 1}`, values: []});
+            }
+        }
+    };
+
+    let allYears = yearNest.concat(newYears);
+    allYears.sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
+
+    let yearHistogram = d3.select("#year");
+
+    let yearGroup = yearHistogram
+        .selectAll(".group")
+        .data(allYears)
+        .enter()
+        .append("div")
+        .attr("class", "group");
 
     //sets up two lists that I will use to assign colors to specific causes of death
     let colors = ["#34A8F9", "#978802", "#EA8F00", "#C1738D", "#288CD2", "#B7A40A", "#C07924", "#DD8FA9", "#2D6FA3", "#615718", "#9B5E00", "#7F4B5B", "#2D5A83"];
     let causes = ["Shot", "Drowned", "Train", "Suicide", "Fall", "Injuries", "Shot-Accident", "Suffocation", "Accident", "Balloon crash", "Bludgeoned", "Pneumonia", "Unknown"]
     
-    //sets up a list of names (I have plans to potentially add a list to the footer)
-    let names = [];
+    // footer.html(`<p>${names}<p>`);
     for (let i = 0; i < dataset.length; i++) {
-        names[i] = dataset[i].Names;
-    };
+        footer.append("p").html(dataset[i].Names)
+        .style("color", "#333333")
+        .attr("class", function(d) {
+                if (causes.indexOf(dataset[i].Cause) !== -1) {
+                    let newIndex = causes.indexOf(dataset[i].Cause);
+                    return colors[newIndex];
+                } else {
+                    return "#333333";
+                }
+        });
+    }
 
-    //D3 CODE------------------------------------------------------
+    window.onscroll = function() {changeColor()};
+
+
+    function changeColor() {
+      if (document.body.scrollTop > 2840 || document.documentElement.scrollTop > 2840) {
+            footer.selectAll("p")
+                .style("transition", "color 1s")
+                .style("color", function() {
+                    return this.className;
+                });
+      } else {
+        footer.selectAll("p").style("color", "#333333");
+      }
+    }
 
     //funtions for when the user's mouse hovers into, within, and out of a box
     function tooltipEnter(d) {
@@ -42,7 +136,6 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
             .style("opacity", 1)
             .style("left", (d3.event.pageX - 100) + "px")		
             .style("top", (d3.event.pageY + 20) + "px")
-            .html(d.Names)
             .html(`<h3>${d.Names}</h3>
             <p><span>born: </span>${d.dob}</p>
             <p><span>died: </span>${d.dod}</p>
@@ -102,4 +195,54 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
             .on("touchend", tooltipLeave)
             ;
         };
+
+    ageGroup.append('text').text(d => d.key)
+        .style("font-size", "8px")
+        .style("text-align", "right")
+        .style("padding", "5px");
+    
+    for (let i = 0; i < allAges.length; i++) {
+        ageGroup
+        .selectAll(".personAge")
+        .data(d => d.values)
+        .enter()
+        .append('div')
+        .style("background-color", "#555555")
+        // .style("background-color", function(d) {
+        //     if (causes.indexOf(d.Cause) !== -1) {
+        //         let newIndex = causes.indexOf(d.Cause);
+        //         return colors[newIndex];
+        //     } else {
+        //         return "#ffffff";
+        //     }
+        // })
+        .attr("class", "personAge");
+    };
+
+   
+
+    for (let i = 0; i < allYears.length; i++) {
+        yearGroup
+        .selectAll(".personYear")
+        .data(d => d.values)
+        .enter()
+        .append('div')
+        // .style("background-color", function(d) {
+        //     if (causes.indexOf(d.Cause) !== -1) {
+        //         let newIndex = causes.indexOf(d.Cause);
+        //         return colors[newIndex];
+        //     } else {
+        //         return "#ffffff";
+        //     }
+        // })
+        .style("background-color", "#555555")
+        .attr("class", "personYear");
+    }
+
+    yearGroup.append('text').text(d => d.key)
+        .style("font-size", "8px")
+        .style("text-align", "center");
+
+
+
 });

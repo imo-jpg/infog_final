@@ -1,0 +1,266 @@
+@font-face {
+    font-family: "Neue Montreal";
+    src: url("NeueMontreal-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Neue Montreal";
+    src: url("NeueMontreal-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Neue Montreal";
+    src: url("NeueMontreal-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: 'Neue Montreal', monospace;
+}
+
+body {
+    background: #222222;
+    width: 100%;
+    /* height: 100vh; */
+    overflow-x: hidden;
+    margin: 0;
+}
+
+.chart {
+    width: 60%;
+    margin: auto;
+    display: flex; 
+    flex-wrap: wrap;
+    padding: 2.5% 0 1% 0;
+    /* justify-content: center; */
+}
+
+.chartSmall {
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.chartSmallContainer {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    padding: 2.5% 0 1% 0;
+}
+
+.holderBig {
+    width: 40%;
+    padding-bottom: 20px;
+}
+
+.holderMedium {
+    width: 30%;
+    padding-bottom: 20px;
+}
+
+.holderSmall {
+    width: 20%;
+}
+
+.chartSmallContainer .label {
+    width: auto;
+    padding: 2.5% 5% 1% 10px;
+}
+
+.label.regular {
+    font-style: normal;
+}
+
+#footer {
+    z-index: -1;
+    position: fixed;
+    top: 0px;
+    column-count: 2;
+    /* column-width:40px; */
+    column-gap: 80vw;
+    /* width: 60%; */
+    padding: 2.5% 10px;
+    /* margin: auto; */
+}
+
+#footer p {
+    font-size: 1.25vh;
+    /* font-size: .65rem; */
+    line-height: 1.25vh;
+}
+
+.bottomspace {
+    height: 100px;
+}
+
+.text {
+    width: 60%;
+    margin: auto;
+    padding: 5% 10px 0 10px;
+}
+
+#intro {
+    padding-top: 2.5%;
+}
+
+.spacer {
+    height: 100vh;
+}
+
+.spacer p {
+    padding-top: 45%;
+}
+
+.person {
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.tooltip {
+    background: #333333;
+    width: fit-content;
+    border-radius: 2px;
+    position: absolute;
+    opacity: 0;
+    padding: 10px;
+    border: 1px solid #ffffff;
+}
+
+.label {
+    width: 60%;
+    margin: auto;
+    font-style: italic;
+    padding: 0 10px;
+    font-size: .85rem;
+}
+
+h3, p {
+    margin: 0;
+}
+
+span {
+    font-weight: bold;
+}
+
+.histogram {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 60%;
+    margin: auto;
+    padding: 2.5% 0 1% 0;
+}
+
+#age {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: .5%;
+}
+  
+.group {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5px;
+}
+
+.ageGroup {
+    display: flex;
+    flex-direction: row;
+    margin: 3.5px;
+}
+
+.personAge {
+    height: 20px;
+    width: 20px;
+    margin: 0 3.5px;
+    border-radius: 2px;
+}
+
+.personYear {
+    height: 20px;
+    width: 20px;
+    margin: 3.5px;
+    border-radius: 2px;
+}
+
+@media screen and (max-width: 800px) {
+    .chart {
+        width: 90%;
+    }
+
+    .text {
+        width: 90%;
+    }
+
+    .label {
+        width: 90%;
+    }
+
+    .chartSmallContainer {
+        width: 90%;
+    }
+
+    .holderBig {
+        width: 90%;
+    }
+    
+    .holderMedium {
+        width: 90%;
+    }
+    
+    .holderSmall {
+        width: 45%;
+    }
+
+    .person {
+        height: 20px;
+        width: 20px;
+        margin: 10px;
+    }
+
+    #footer {
+        display: none;
+    }
+
+    #age {
+        width: auto;
+    }
+
+    #year {
+        padding-left: 2%;
+        width: auto;
+    }
+
+    .personAge {
+        height: 15px;
+        width: 15px;
+        margin: 0 3.5px;
+        border-radius: 2px;
+    }
+
+    .ageGroup {
+        margin: 0px;
+    }
+    
+    .group {
+        margin: .5px;
+    }
+
+    .personYear {
+        height: 7.5px;
+        width: 7.5px;
+        margin: 1px;
+        border-radius: 2px;
+    }
+
+  }
