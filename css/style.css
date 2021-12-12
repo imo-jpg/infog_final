@@ -105,7 +105,12 @@ body {
 }
 
 #intro {
+    padding: 25% 0;
+}
+
+#instruction {
     padding-top: 2.5%;
+    font-style: italic;
 }
 
 .spacer {

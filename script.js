@@ -116,7 +116,8 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
     window.onscroll = function() {changeColor()};
 
     function changeColor() {
-      if (document.body.scrollTop > 2840 || document.documentElement.scrollTop > 2840) {
+
+      if (document.body.scrollTop > 3600 || document.documentElement.scrollTop > 3600) {
             footer.selectAll("p")
                 .style("transition", "color 1s")
                 .style("color", function() {
