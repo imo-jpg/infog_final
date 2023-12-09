@@ -24,65 +24,100 @@ let justYear = d3.timeFormat("%Y");
 //reads in my dataset
 d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
 
+    //sets up color scale for first chart
+    // let quantizeScale = d3.scaleQuantize()
+    //     .domain([2, 80])
+    //     // .range(['#E0E0E0', '#C6C6C6', '#A8A8A8', '#8D8D8D', '#6F6F6F', '#525252', '#393939', '#262626']);
+    //     .range(['#E0E0E0', '#A8A8A8', '#6F6F6F', '#393939', '#262626']);
+
+
     //adjusts the values in the dataset so they're more usable
     dataset.forEach(function(d) {
         d.Age = parseFloat(d.Age);
         d.year = d.dod;
         d.year = justYear(dateFormat(d.year));
     });
+    
+    //starts building new age histogram
+    let yScale = d3.scaleLinear();
 
     //sets up the nested ages for building the histogram
     let ageNest = d3
-        .nest()
-        .key(d => d.Age)
-        .entries(dataset)
-        .sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
+        .groups(dataset, (d) => d.Age);
+        // .key(d => d.Age)
+        // .entries(dataset)
+        // .sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
 
-    let newAges = [];
+        let bin = d3.bin().thresholds(15).value(d => d.Age);
+        let ageBins = bin(dataset);
+        console.log(ageBins);
 
-        for (let i = 0; i < ageNest.length; i++) {
-           if (i != 0) {
-               let difference = ageNest[i].key - ageNest[i-1].key;
-               if (difference == 1) {
-               } else if (difference > 1) {
-                   for (let j = 1; j < difference; j++) {
-                       newAges.push({key: `${parseFloat(ageNest[i].key) - j}`, values: []});
-                    }
-                }
-            }
-       };
+    // let newAges = [];
+
+    //     for (let i = 0; i < ageNest.length; i++) {
+    //        if (i != 0) {
+    //            let difference = ageNest[i].key - ageNest[i-1].key;
+    //            if (difference == 1) {
+    //            } else if (difference > 1) {
+    //                for (let j = 1; j < difference; j++) {
+    //                    newAges.push({key: `${parseFloat(ageNest[i].key) - j}`, values: []});
+    //                 }
+    //             }
+    //         }
+    //    };
    
-    let allAges = ageNest.concat(newAges);
-    allAges.sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
+    // let allAges = ageNest.concat(newAges);
+    // let allAges = newAges;
+
+    // allAges.sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
 
     let ageHistogram = d3.select("#age");
 
+
     let ageGroup = ageHistogram
-        .selectAll(".ageGroup")
-        .data(allAges)
+        .selectAll(".group")
+        .data(ageBins)
         .enter()
         .append("div")
-        .attr("class", "ageGroup");
+        .attr("class", "group");
+
+    //this adds the age legends to the age histogram
+    ageGroup.append('text').text(d => `${d.x0}-${d.x1}`)
+        .style("width", "32px")
+        .style("font-family", "IBM Plex Mono")
+        .style("font-size", "8px")
+        .style("text-align", "right")
+        .style("padding-right", "5px");
+    //would like to add the right amount of padding so that single-digit numbers and double-digit ones both have their boxes aligned right
     
-    //sets up the nested years for building the histogram
+    //this appends the right number of boxes to the ages histogram
+    for (let i = 0; i < ageBins.length; i++) {
+    //     console.log(ageBins[i]);
+    ageGroup
+        .selectAll(".personAge")
+        .data((d) => d)
+        .enter()
+        .append('div')
+        .style("background-color", "#666666")
+        .attr("class", "personAge");
+    };
+    
+    //sets up the nested years for building the year bar chart
     let yearNest = d3
-        .nest()
-        .key(d => d.year)
-        .entries(dataset);
+        .groups(dataset, (d) => d.year);
 
     let newYears = [];
 
      for (let i = 0; i < yearNest.length; i++) {
         if (i != 0) {
-            if (yearNest[i].key - yearNest[i-1].key == 1) {
+            if (yearNest[i][0] - yearNest[i-1][0] == 1) {
             } else {
-                newYears.push({key: `${parseFloat(yearNest[i].key) - 1}`, values: []});
+                newYears.push([`${parseFloat(yearNest[i][0]) - 1}`, []]);
             }
         }
     };
-
     let allYears = yearNest.concat(newYears);
-    allYears.sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
+    allYears.sort((a,b) => d3.ascending(parseFloat(a[0]), parseFloat(b[0])));
 
     let yearHistogram = d3.select("#year");
 
@@ -93,6 +128,24 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
         .append("div")
         .attr("class", "group");
 
+    //this appends the right number of boxes to the years histogram
+    for (let i = 0; i < allYears.length; i++) {
+        yearGroup
+        .selectAll(".personYear")
+        .data(d => d[1])
+        .enter()
+        .append('div')
+        .style("background-color", "#666666")
+        .style("border", "1px solid #666666")
+        .attr("class", "personYear");
+    }
+
+    //this adds the age legends to the year histogram
+    yearGroup.append('text').text(d => d[0])
+        .style("font-family", "IBM Plex Mono")
+        .style("font-size", "8px")
+        .style("text-align", "center");
+
     //sets up two lists that I will use to assign colors to specific causes of death
     let colors = ["#34A8F9", "#978802", "#EA8F00", "#C1738D", "#288CD2", "#B7A40A", "#C07924", "#DD8FA9", "#2D6FA3", "#615718", "#9B5E00", "#7F4B5B", "#2D5A83"];
     let causes = ["Shot", "Drowned", "Train", "Suicide", "Fall", "Injuries", "Shot-Accident", "Suffocation", "Accident", "Balloon crash", "Bludgeoned", "Pneumonia", "Unknown"]
@@ -100,31 +153,30 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
     //adds the list of names to the edges of the page (this shouldn't really be called "footer", sorry)
     for (let i = 0; i < dataset.length; i++) {
         footer.append("p").html(dataset[i].Names)
-        .style("color", "#333333")
+        .style("color", "#666666")
         .attr("class", function(d) {
                 if (causes.indexOf(dataset[i].Cause) !== -1) {
                     let newIndex = causes.indexOf(dataset[i].Cause);
                     return colors[newIndex];
                 } else {
-                    return "#333333";
+                    return "#666666";
                 }
         });
     }
-
 
     //sets up an event listener and a function so the names change color when you scroll past a certain point
     window.onscroll = function() {changeColor()};
 
     function changeColor() {
 
-      if (document.body.scrollTop > 3600 || document.documentElement.scrollTop > 3600) {
+      if (document.body.scrollTop > 1600 || document.documentElement.scrollTop > 1600) {
             footer.selectAll("p")
                 .style("transition", "color 1s")
                 .style("color", function() {
                     return this.className;
                 });
       } else {
-        footer.selectAll("p").style("color", "#333333");
+        footer.selectAll("p").style("color", "#666666");
       }
     }
 
@@ -172,6 +224,12 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
                 return "#ffffff";
             }
         })
+        // .style("border", function(d) {
+        //     console.log(d.id);
+        //     if (d.id == 5) {
+        //         return "2px solid #ffffff";
+        //     }
+        // })
         .on("mouseenter", tooltipEnter)
         .on("mousemove", tooltipMove)
         .on("mouseleave", tooltipLeave)
@@ -194,37 +252,5 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
         .on("touchmove", tooltipMove)
         .on("touchend", tooltipLeave);
     };
-
-    //this adds the age legends to the age histogram
-    ageGroup.append('text').text(d => d.key)
-        .style("font-size", "8px")
-        .style("text-align", "right")
-        .style("padding", "5px");
-    
-    //this appends the right number of boxes to the ages histogram
-    for (let i = 0; i < allAges.length; i++) {
-        ageGroup
-        .selectAll(".personAge")
-        .data(d => d.values)
-        .enter()
-        .append('div')
-        .style("background-color", "#555555")
-        .attr("class", "personAge");
-    };
-
-    //this appends the right number of boxes to the years histogram
-    for (let i = 0; i < allYears.length; i++) {
-        yearGroup
-        .selectAll(".personYear")
-        .data(d => d.values)
-        .enter()
-        .append('div')
-        .style("background-color", "#555555")
-        .attr("class", "personYear");
-    }
-    //this adds the age legends to the year histogram
-    yearGroup.append('text').text(d => d.key)
-        .style("font-size", "8px")
-        .style("text-align", "center");
 
 });

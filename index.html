@@ -6,7 +6,12 @@
         <meta property="og:title" content="Deaths at the Berlin Wall"/>
         <script src="https://unpkg.com/intersection-observer"></script>
         <script src="https://unpkg.com/scrollama"></script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>   
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap" rel="stylesheet">        
         <link href="css/style.css" type="text/css" rel="stylesheet" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -18,7 +23,11 @@
         </div>
 
         <div class="text">
-            <p>An estimated 139 people died at the Berlin Wall during the years it was standing,</p>
+            <p>The Berlin Wall surrounded West Berlin from 1961 to 1989 and seprated it from the rest of West Germany (the FRG) and by extention, East Germany (the GDR). The wall was made of concrete and was protected by guard towers, anti-vehicle trenches, and beds of nails. Its goal was to 'prevent East German citizens from fleeing to the West' [<a href="https://en.wikipedia.org/wiki/Berlin_Wall">1</a>].</p>
+        </div>
+
+        <div class="text">
+            <p>An estimated 139 people died at the Berlin Wall during the years it was standing, at ages ranging from 2 to 80.</p>
         </div>
 
         <figure id="year" class="histogram"></figure>
@@ -29,8 +38,12 @@
 
         <figure id="age" class="histogram"></figure>
 
-        <div class="text spacer">
+        <!-- <div class="text spacer">
             <p id="spacerText">But these are more than just statistics.</p>
+        </div> -->
+
+        <div class="text">
+            <p>But these are more than just statistics.</p>
         </div>
 
         <div class="text">
