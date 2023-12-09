@@ -14,8 +14,8 @@ let footer = d3.select("#footer");
 
 //creates the tooltip to which I will add text later
 const tooltip = d3.select("body")
-            .append("div")
-            .attr("class", "tooltip");
+        .append("div")
+        .attr("class", "tooltip");
 
 //formats the dates in the CSV for easy reading
 let dateFormat = d3.timeParse("%x");
@@ -24,13 +24,6 @@ let justYear = d3.timeFormat("%Y");
 //reads in my dataset
 d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
 
-    //sets up color scale for first chart
-    // let quantizeScale = d3.scaleQuantize()
-    //     .domain([2, 80])
-    //     // .range(['#E0E0E0', '#C6C6C6', '#A8A8A8', '#8D8D8D', '#6F6F6F', '#525252', '#393939', '#262626']);
-    //     .range(['#E0E0E0', '#A8A8A8', '#6F6F6F', '#393939', '#262626']);
-
-
     //adjusts the values in the dataset so they're more usable
     dataset.forEach(function(d) {
         d.Age = parseFloat(d.Age);
@@ -38,41 +31,15 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
         d.year = justYear(dateFormat(d.year));
     });
     
-    //starts building new age histogram
-    let yScale = d3.scaleLinear();
-
     //sets up the nested ages for building the histogram
     let ageNest = d3
         .groups(dataset, (d) => d.Age);
-        // .key(d => d.Age)
-        // .entries(dataset)
-        // .sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
 
-        let bin = d3.bin().thresholds(15).value(d => d.Age);
-        let ageBins = bin(dataset);
-        console.log(ageBins);
-
-    // let newAges = [];
-
-    //     for (let i = 0; i < ageNest.length; i++) {
-    //        if (i != 0) {
-    //            let difference = ageNest[i].key - ageNest[i-1].key;
-    //            if (difference == 1) {
-    //            } else if (difference > 1) {
-    //                for (let j = 1; j < difference; j++) {
-    //                    newAges.push({key: `${parseFloat(ageNest[i].key) - j}`, values: []});
-    //                 }
-    //             }
-    //         }
-    //    };
-   
-    // let allAges = ageNest.concat(newAges);
-    // let allAges = newAges;
-
-    // allAges.sort((a,b) => d3.ascending(parseFloat(a.key), parseFloat(b.key)));
-
+    let bin = d3.bin().thresholds(15).value(d => d.Age);
+    let ageBins = bin(dataset);
+    
+    //this addes the groups for each age bucket to the page
     let ageHistogram = d3.select("#age");
-
 
     let ageGroup = ageHistogram
         .selectAll(".group")
@@ -88,18 +55,16 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
         .style("font-size", "8px")
         .style("text-align", "right")
         .style("padding-right", "5px");
-    //would like to add the right amount of padding so that single-digit numbers and double-digit ones both have their boxes aligned right
     
     //this appends the right number of boxes to the ages histogram
     for (let i = 0; i < ageBins.length; i++) {
-    //     console.log(ageBins[i]);
-    ageGroup
-        .selectAll(".personAge")
-        .data((d) => d)
-        .enter()
-        .append('div')
-        .style("background-color", "#666666")
-        .attr("class", "personAge");
+        ageGroup
+            .selectAll(".personAge")
+            .data((d) => d)
+            .enter()
+            .append('div')
+            .style("background-color", "#666666")
+            .attr("class", "personAge");
     };
     
     //sets up the nested years for building the year bar chart
@@ -119,6 +84,7 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
     let allYears = yearNest.concat(newYears);
     allYears.sort((a,b) => d3.ascending(parseFloat(a[0]), parseFloat(b[0])));
 
+    //this sets up the year histogram with the right number of groups
     let yearHistogram = d3.select("#year");
 
     let yearGroup = yearHistogram
@@ -224,12 +190,6 @@ d3.csv("berlin_wall_deaths.csv").then(function(dataset) {
                 return "#ffffff";
             }
         })
-        // .style("border", function(d) {
-        //     console.log(d.id);
-        //     if (d.id == 5) {
-        //         return "2px solid #ffffff";
-        //     }
-        // })
         .on("mouseenter", tooltipEnter)
         .on("mousemove", tooltipMove)
         .on("mouseleave", tooltipLeave)
